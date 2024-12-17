@@ -39,6 +39,7 @@
 					<hr class="" aria-hidden="true">
 				
           <?php
+
             if(comments_open()){
               comment_form(
                 array(
