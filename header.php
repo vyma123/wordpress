@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blog Site Template">
-    <meta name="author" content="https://youtube.com/FollowAndrew">    
+    <meta name="description" content="Nguyen Van A">
+    <meta name="author" content="https://youtube.com/">    
     <link rel="shortcut icon" href="/wp-content/themes/follow/assets/images/logo.png"> 
   
 	 <?php

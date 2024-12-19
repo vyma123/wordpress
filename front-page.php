@@ -7,128 +7,194 @@ get_header();
 			<h2><?php the_title(); ?></h2>
             <div id="main-content" class="main-content">
                 <main id="content" role="main">
-               
+
                 <section class="section-hero">
                   <div class="hero">
-                     <div class="hero-left">
-                      <a href="#">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                        <span class="address">
-                        <i class="location arrow icon"></i>
-                          Nam Du</span>
-                        <h1>Hải Đăng Nam Du Vẻ Đẹp Kiêu Hãnh Tại Quần Đảo 
-                          </h1>
-                        </a>
-                     </div>
-                     <div class="hero-right">
-                       <div class="hero-right-top"> 
-                       <a href="#">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                        <span class="address top_r">
-                        <i class="location arrow icon"></i>
-                        Phú Quốc </span>
-                        <h1>Phú Quốc – Điểm danh những trải nghiệm nghệ thuật đầy ấn tượng 
-                          </h1>
-                        </a>
-                       </div>
-                       <div class="hero-right-bottom">
-                        <div>
-                        <a href="#">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                        <span class="address">
-                        <i class="location arrow icon"></i>
-                        Palawan, Philippines</span>
-                         <h3>Kinh nghiệm du lịch El Nido, Palawan, Philippines
-                          </h3>
-                        </a>
-                        </div>
+                    <?php
+                    $args = array(
+                        'posts_per_page' => 4, 
+                        'orderby' => 'date',
+                        'order' => 'ASC' 
+                    );
+                    $query = new WP_Query($args);
 
-                        <div>
-                        <a href="#">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                        <span class="address">
-                        <i class="location arrow icon"></i>
-                          Seoul, Nhật Bản</span>
-                         <h3>Đi Seoul “Quẩy Tung” Khu Phố Itaewon Sôi Động
-                          </h3>
-                        </a>
-                        </div>
+                    if ($query->have_posts()) : 
+                        $counter = 0; 
+                        while ($query->have_posts()) : 
+                            $query->the_post(); 
+                            $counter++;
+                            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
+                            $location = get_post_meta(get_the_ID(), 'address', true); 
+                            if (!$image_url) {
+                                $image_url = get_template_directory_uri() . '/assets/images/travel2.jpg'; 
+                            }
+                            ?>
+                            <?php if ($counter == 1): ?>
+                            <div class="hero-left">
+                              <a href="<?php the_permalink(); ?>">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
+                                <span class="address">
+                                  <i class="location arrow icon"></i>
+                                  <?php echo esc_html(get_theme_mod('mytheme_address_1_setting', 'Default Address 1')); ?>
+                                </span>
 
-                       </div>
-                     </div>
+                                <h1 style="color: <?php echo esc_attr(get_theme_mod('mytheme_title_color_setting', '#FF5733')); ?>;"><?php the_title(); ?></h1>
+                              </a>
+                            </div>
+                            <?php elseif ($counter == 2): ?>
+                            <div class="hero-right">
+                              <div class="hero-right-top">
+                                <a href="<?php the_permalink(); ?>">
+                                  <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
+                                  <span class="address top_r">
+                                    <i class="location arrow icon"></i>
+                                    <?php echo esc_html(get_theme_mod('mytheme_address_2_setting', 'Default Address 2')); ?>
+                                    </span>
+                                  <h1 style="color: <?php echo esc_attr(get_theme_mod('mytheme_subtitle_color_setting', '#FF5733')); ?>;"><?php the_title(); ?></h1>
+                                </a>
+                              </div>
+                              <div class="hero-right-bottom">
+                            <?php elseif($counter == 3): ?>
+                                <div>
+                                  <a href="<?php the_permalink(); ?>">
+                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
+                                    <span class="address">
+                                      <i class="location arrow icon"></i>
+                                      <?php echo esc_html(get_theme_mod('mytheme_address_3_setting', 'Default Address 3')); ?>
+                                      </span>
+                                    <h3 style="color: <?php echo esc_attr(get_theme_mod('mytheme_subtitle_color_setting', '#FF5733')); ?>;"><?php the_title(); ?></h3>
+                                  </a>
+                                </div>
+                            <?php elseif($counter == 4): ?>
+                              <div>
+                                  <a href="<?php the_permalink(); ?>">
+                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
+                                    <span class="address">
+                                      <i class="location arrow icon"></i>
+                                      <?php echo esc_html(get_theme_mod('mytheme_address_4_setting', 'Default Address 4')); ?>
+                                      </span>
+                                    <h3 style="color: <?php echo esc_attr(get_theme_mod('mytheme_subtitle_color_setting', '#FF5733')); ?>;"><?php the_title(); ?></h3>
+                                  </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($counter == 4): ?>
+                              </div>
+                            </div>
+                            <?php endif; ?>
+                        <?php endwhile; 
+                        wp_reset_postdata(); 
+                    endif; ?>
                   </div>
                 </section>
 
                 <section class="dont_miss">
                   <div class="left_dont_miss">
+
                   <span class="text_dont_miss">
-                 ĐỪNG BỎ LỠ
-                </span>
+                    ĐỪNG BỎ LỠ
+                  </span>
                   <div class="line_">
-                   </div>
-                  <div class="article">
-                     <div class="article_box">
+                    </div>
+                    <div class="article">
+                      <div class="article_box">
+                  <?php
+                    $args = array(
+                        'posts_per_page' => 5, 
+                        'orderby' => 'date',
+                        'order' => 'ASC' ,
+                        'offset' => 4, 
+
+                    );
+                    $query = new WP_Query($args);
+
+                    if ($query->have_posts()) : 
+                        $counter = 4; 
+                        while ($query->have_posts()) : 
+                            $query->the_post(); 
+                            $counter++;
+                            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
+                            $location = get_post_meta(get_the_ID(), 'address', true); 
+                            if (!$image_url) {
+                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                            }
+                            $author = get_the_author();  
+                            ?>        
+
+                       <?php if ($counter == 5): ?>
                        <div class="left">
-                         <a href="#">
+                         <a href="<?php the_permalink(); ?>">
                         <div >
-                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                          <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                         </div>
-                        <p class="title">Bán đảo Shakotan: Khám phá Vùng Đất Tuyệt đẹp ở Nhật Bản
+                        <p class="title"><?php the_title(); ?>
                           </p>
-                          <span class="author"> Zoomtravel </span>
-                          <p class="text">Nằm gần thành phố Otaru, bán đảo Shakotan là một đường bờ biển núi non hùng vĩ với tầm nhìn ngoạn mục ra Biển Nhật Bản (Biển Đông).</p>
+                          <span class="author"><?php echo esc_html($author); ?> 
+                        </span>
+                          <p class="text"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
                         </a>
                         </div>
-                        <div class="right">
+                       <?php elseif ($counter == 6 ): ?>
+                        <div class="right">            
                           <div>
-                            <a href="#">
+                            <a href="<?php the_permalink(); ?>">
                               <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                               </div>
-                              <div>
-                                <p class="title">Phuket- Thiên Đường Biển Đảo Thái Lan rất nổi tiếng
+                              <div class ="title_name_box">
+                                <p class="title"><?php the_title(); ?>
                                 </p>
-                                <span class="author"> Zoomtravel </span>
+                                <p class="date"><?php echo get_the_date(); ?></p>
+                                </div>
+                              </a>
+                           </div>
+                           <?php elseif ($counter == 7 ): ?>
+
+                            <div>
+                            <a href="<?php the_permalink(); ?>">
+                              <div class="img_box">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
+                              </div>
+                              <div class ="title_name_box">
+                                <p class="title"><?php the_title(); ?>
+                                </p>
+                                <p class="date"><?php echo get_the_date(); ?></p>
+                                </div>
+                              </a>
+                           </div>
+                           <?php elseif ($counter == 8 ): ?>
+
+                            <div>
+                            <a href="<?php the_permalink(); ?>">
+                              <div class="img_box">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
+                              </div>
+                              <div class ="title_name_box">
+                                <p class="title"><?php the_title(); ?>
+                                </p>
+                                <p class="date"><?php echo get_the_date(); ?></p>
                                 </div>
                               </a>
                            </div>
 
-                           <div>
-                            <a href="#">
+                           <?php elseif ($counter == 9 ): ?>
+
+                            <div>
+                            <a href="<?php the_permalink(); ?>">
                               <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                               </div>
-                              <div>
-                                <p class="title">Du Lịch Nga tại Kuskovo – Nơi Ở trước Của Quý Tộc
+                              <div class ="title_name_box">
+                                <p class="title"><?php the_title(); ?>
                                 </p>
-                                <span class="author"> Zoomtravel </span>
+                                <p class="date"><?php echo get_the_date(); ?></p>
                                 </div>
                               </a>
-                           </div>
-                           <div>
-                            <a href="#">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div>
-                                <p class="title">Ngôi làng Zaanse Schans - Ngôi Làng của cối xay gió 
-                                </p>
-                                <span class="author"> Zoomtravel </span>
-                                </div>
-                              </a>
-                           </div>
-                           <div>
-                            <a href="#">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div>
-                                <p class="title">Điểm Du Lịch Hấp Dẫn: “ Phố Đèn Đỏ “ - Tại Hà Lan
-                                </p>
-                                <span class="author"> Zoomtravel </span>
-                                </div>
-                              </a>
-                           </div>
+                            </div>
+
+                           <?php endif; ?>
+                        <?php endwhile; 
+                        wp_reset_postdata(); 
+                       endif; ?>
                         </div>
                      </div>
                    </div>
@@ -139,8 +205,7 @@ get_header();
                     </span>
                      <div class="line_">
                     </div>
-                <div>
-
+                 <div>
                    <div class="box_side_bar">
 
                     <div>
@@ -168,109 +233,107 @@ get_header();
                     </div>
 
                     <div class="adv">
-                      <div>
-                      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                      <div class="adv_image">
+                        <?php 
+                          $adv_image = get_theme_mod('custom_adv_image');
+                          if ($adv_image) { 
+                        ?>
+                          <img src="<?php echo esc_url($adv_image); ?>" alt="Advertisement">
+                        <?php } ?>
                       </div>
-                      <p>THIÊN ĐƯỜNG BIỂN <br> ĐẢO CÔ TÔ</p>
-                      <a href="#">ĐẶT TOUR ></a>
+                      <h4 class="title_advertisement">
+                        <?php echo esc_html(get_theme_mod('custom_adv_title', 'Text advertisement')); ?>
+                      </h4>
+                      <a href="<?php echo esc_url(get_theme_mod('custom_adv_link', '#')); ?>" class="button_buy">
+                        <?php echo esc_html(get_theme_mod('custom_adv_button_text', 'Đặt ngay')); ?>
+                      </a>
                     </div>
+
                    </div>
                    </div>
-                  </section>
+
+                </section>
                   
                 <section class="dont_miss news">
                   <div class="left_dont_miss">
                   <span class="text_out_country">
-                TOUR NƯỚC NGOÀI
-                </span>
+                 TOUR DU LỊCH HOT
+                 </span>
                   <div class="line_">
                    </div>
                   <div class="article">
                      <div class="article_box">
+
+                     
+                  <?php
+                    $args = array(
+                        'posts_per_page' => 6, 
+                        'orderby' => 'date',
+                        'order' => 'ASC' ,
+                        'offset' => 9, 
+                    );
+                    $query = new WP_Query($args);
+
+                    if ($query->have_posts()) : 
+                        $counter = 9; 
+                        while ($query->have_posts()) : 
+                            $query->the_post(); 
+                            $counter++;
+                            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
+                            $location = get_post_meta(get_the_ID(), 'address', true); 
+                            if (!$image_url) {
+                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                            }
+                            $author = get_the_author();  
+                            ?>       
+
+                       <?php if ($counter == 10): ?>                      
                        <div class="left">
-                         <a href="#">
-                        <div >
-                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                         <a href="<?php the_permalink(); ?>">
+                        <div class="left_hot">
+                          <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                         </div>
-                        <p class="title">Khám Phá Mùa Lá Đỏ tại Nhật Bản trong năm 2024
+                        <p class="title"><?php the_title(); ?>
                           </p>
-                          <span class="author"> Zoomtravel </span>
-                          <p class="text">  Mùa thu Nhật Bản, đặc biệt là mùa lá đỏ, luôn là thời điểm thu hút hàng triệu du khách từ khắp nơi trên thế giới. Hãy khám phá cảnh quan thiên nhiên đẹp này.</p>
+                          <span class="author"> <?php echo esc_html($author); ?>  </span>
+                          <p class="text"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
                         </a>
                         </div>
+
+                        <?php elseif ($counter == 11): ?>                      
                         <div class="left">
-                         <a href="#">
-                        <div >
-                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                         <a href="<?php the_permalink(); ?>">
+                        <div class="left_hot">
+                          <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                         </div>
-                        <p class="title">Merlion Park: Biểu tượng của quốc đảo sư tử
+                        <p class="title"><?php the_title(); ?>
                           </p>
-                          <span class="author"> Zoomtravel </span>
-                          <p class="text">Không thể nhắc đến du lịch Singapore mà bỏ qua Merlion Park. Nơi đây nổi bật với bức tượng sư tử biển Merlion – biểu tượng không chính thức của Singapore.</p>
+                          <span class="author"> <?php echo esc_html($author); ?>  </span>
+                          <p class="text"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
                         </a>
                         </div>
                        
                      </div>
                      <div class="right news_botton">
+                     <?php elseif ($counter > 11 && $counter < 16): ?>                      
                           <div>
-                            <a href="#">
+                            <a href="<?php the_permalink(); ?>">
                               <div class="news_botton_box">
                               <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                               </div>
                               <div>
-                                <p class="title">Vẻ Đẹp Nao Lòng Khi Vào Thu Tại Bắc Kinh Tuyệt Đẹp
+                                <p class="title title_hot"><?php the_title(); ?>
                                 </p>
-                                <span class="author"> Zoomtravel </span>
+                                <span class="author"> <?php echo esc_html($author); ?>  </span>
                                 </div>
                               </div>
                               </a>
                            </div>
-                           <div>
-                           <a href="#">
-                              <div class="news_botton_box">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div>
-                                <p class="title">Cảnh Sắc Lệ Giang Qua Các Mùa Trong Năm
-                                </p>
-                                <span class="author"> Zoomtravel </span>
-                                </div>
-                              </div>
-                              </a>
-                           </div>
-
-                           <div>
-                           <a href="#">
-                              <div class="news_botton_box">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div>
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                <span class="author"> Zoomtravel </span>
-                                </div>
-                              </div>
-                              </a>
-                           </div>
-
-                           <div>
-                           <a href="#">
-                              <div class="news_botton_box">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div>
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                <span class="author"> Zoomtravel </span>
-                                </div>
-                              </div>
-                              </a>
-                           </div>
-
+                           <?php endif; ?>
+                        <?php endwhile; 
+                        wp_reset_postdata(); 
+                       endif; ?>
                         </div>
                    </div>
                   </div>
@@ -284,134 +347,109 @@ get_header();
                    <div class="box_side_bar">
 
                    <div class="right news_botton">
+                   <?php
+                    $args = array(
+                        'posts_per_page' => 4, 
+                        'orderby' => 'date',
+                        'order' => 'ASC' ,
+                        'offset' => 15, 
+                    );
+                    $query = new WP_Query($args);
+
+                    if ($query->have_posts()) : 
+                        $counter = 15; 
+                        while ($query->have_posts()) : 
+                            $query->the_post(); 
+                            $counter++;
+                            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
+                            $location = get_post_meta(get_the_ID(), 'address', true); 
+                            if (!$image_url) {
+                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                            }
+                            $author = get_the_author();  
+                            ?>     
+
+                          <?php if ($counter > 15 && $counter < 20): ?>                      
                           <div>
-                            <a href="#">
+                            <a href="<?php the_permalink(); ?>">
                               <div class="news_botton_box tour_f_right">
                               <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                               </div>
                               <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
+                                <p class="title"><?php the_title(); ?>
                                 </p>
                                 </div>
                               </div>
                               </a>
                            </div>
-
-                           <div>
-                           <a href="#">
-                              <div class="news_botton_box tour_f_right">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                </div>
-                              </div>
-                              </a>
-                           </div>
-
-                           <div>
-                           <a href="#">
-                              <div class="news_botton_box tour_f_right">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                </div>
-                              </div>
-                              </a>
-                           </div>
-
-                           <div>
-                           <a href="#">
-                              <div class="news_botton_box tour_f_right">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                </div>
-                              </div>
-                              </a>
-                           </div>
-
+                           <?php endif; ?>
+                        <?php endwhile; 
+                        wp_reset_postdata(); 
+                       endif; ?>
                         </div>
                    </div>
                    </div>
                   </section>
 
-                <section class="dont_miss news gc">
+                 <section class="dont_miss news gc">
                   <div class="left_dont_miss">
                   <span>
                   TOUR GIỜ CHÓT
                  </span>
                   <div class="line_">
-                   </div>
-
+                  </div>
                    <div class="gc_flex">
-                            <a href="#">
+
+                   <?php
+                    $args = array(
+                        'posts_per_page' => 4, 
+                        'orderby' => 'date',
+                        'order' => 'ASC' ,
+                        'offset' => 19, 
+                    );
+                    $query = new WP_Query($args);
+
+                    if ($query->have_posts()) : 
+                        $counter = 19; 
+                        while ($query->have_posts()) : 
+                            $query->the_post(); 
+                            $counter++;
+                            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
+                            $location = get_post_meta(get_the_ID(), 'address', true); 
+                            if (!$image_url) {
+                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                            }
+                            $author = get_the_author();  
+                            ?>     
+
+                          <?php if ($counter > 19 && $counter < 24): ?> 
+
+                            <a href="<?php the_permalink(); ?>">
                               <div class="news_botton_box tour_f_right">
                               <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                               </div>
                               <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
+                                <p class="title"><?php the_title(); ?>
                                 </p>
                                 </div>
                               </div>
                               </a>
 
-                              <a href="#">
-                              <div class="news_botton_box tour_f_right">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                </div>
-                              </div>
-                              </a>
-
-                              <a href="#">
-                              <div class="news_botton_box tour_f_right">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                </div>
-                              </div>
-                              </a>
-
-                              <a href="#">
-                              <div class="news_botton_box tour_f_right">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                </div>
-                              </div>
-                              </a>
+                              <?php endif; ?>
+                        <?php endwhile; 
+                        wp_reset_postdata(); 
+                       endif; ?>
                     </div>
 
                   </div>
                 </section>
 
-
-                
                 <section class="dont_miss tour_in_country">
                   <div class="left_dont_miss">
                   <span class="title_in_country">
-                TOUR TRONG NƯỚC
+                ĐIỂM ĐẾN YÊU THÍCH
                 </span>
                   <div class="line_">
                    </div>
@@ -419,74 +457,73 @@ get_header();
                      <div class="article_box">
                      
                         <div class="right">
+                        <?php
+                    $args = array(
+                        'posts_per_page' => 4, 
+                        'orderby' => 'date',
+                        'order' => 'ASC' ,
+                        'offset' => 23, 
+                    );
+                    $query = new WP_Query($args);
+
+                    if ($query->have_posts()) : 
+                        $counter = 23; 
+                        while ($query->have_posts()) : 
+                            $query->the_post(); 
+                            $counter++;
+                            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
+                            $location = get_post_meta(get_the_ID(), 'address', true); 
+                            if (!$image_url) {
+                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                            }
+                            $author = get_the_author();  
+                            ?>     
+
+                          <?php if ($counter > 23 && $counter < 28): ?> 
                           <div>
-                            <a href="#">
+                            <a href="<?php the_permalink(); ?>">
                               <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                               </div>
                               <div>
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
+                                <p class="title"><?php the_title(); ?>
                                 </p>
-                                <span class="author"> Zoomtravel </span>
-                                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum tenetur dolor saepe modi consequatur tempora, iste reiciendis vitae ut aspernatur.</p>
+                                <span class="author"> <?php echo esc_html($author); ?>  </span>
+                                <p class="text"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
                                 </div>
                               </a>
                            </div>
 
-                           <div>
-                            <a href="#">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div>
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                <span class="author"> Zoomtravel </span>
-                                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum tenetur dolor saepe modi consequatur tempora, iste reiciendis vitae ut aspernatur.</p>
-                                </div>
-                              </a>
-                           </div>
+                           <?php endif; ?>
+                        <?php endwhile; 
+                        wp_reset_postdata(); 
+                       endif; ?>
 
-                           <div>
-                            <a href="#">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div>
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                <span class="author"> Zoomtravel </span>
-                                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum tenetur dolor saepe modi consequatur tempora, iste reiciendis vitae ut aspernatur.</p>
-                                </div>
-                              </a>
-                           </div>
-
-                           <div>
-                            <a href="#">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div>
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                <span class="author"> Zoomtravel </span>
-                                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum tenetur dolor saepe modi consequatur tempora, iste reiciendis vitae ut aspernatur.</p>
-                                </div>
-                              </a>
-                           </div>
                         </div>
                      </div>
                    </div>
                   </div>
                    <div class="right_dont_miss">
                    <div>
-                    <div class="adv">
-                      <div>
-                      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+
+                    
+                   <div class="adv">
+                      <div class="adv_image">
+                        <?php 
+                          $adv_image = get_theme_mod('custom_adv_image');
+                          if ($adv_image) { 
+                        ?>
+                          <img src="<?php echo esc_url($adv_image); ?>" alt="Advertisement">
+                        <?php } ?>
                       </div>
-                      <p>THIÊN ĐƯỜNG BIỂN <br> ĐẢO CÔ TÔ</p>
-                      <a href="#">ĐẶT TOUR ></a>
+                      <h4 class="title_advertisement">
+                        <?php echo esc_html(get_theme_mod('custom_adv_title', 'Text advertisement')); ?>
+                      </h4>
+                      <a href="<?php echo esc_url(get_theme_mod('custom_adv_link', '#')); ?>" class="button_buy">
+                        <?php echo esc_html(get_theme_mod('custom_adv_button_text', 'Đặt ngay')); ?>
+                      </a>
                     </div>
+
                    </div>
                    <div>
                    <div class="left">
@@ -495,15 +532,45 @@ get_header();
                     </span>
                      <div class="line_ line_f">
                     </div>
-                         <a href="#">
-                         <p class="title tilte_in_country">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại 3 ngày 3 đêm
+
+                    
+                    <?php
+                    $args = array(
+                        'posts_per_page' => 1, 
+                        'orderby' => 'date',
+                        'order' => 'ASC' ,
+                        'offset' => 27, 
+                    );
+                    $query = new WP_Query($args);
+
+                    if ($query->have_posts()) : 
+                        $counter = 27; 
+                        while ($query->have_posts()) : 
+                            $query->the_post(); 
+                            $counter++;
+                            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
+                            $location = get_post_meta(get_the_ID(), 'address', true); 
+                            if (!$image_url) {
+                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                            }
+                            $author = get_the_author();  
+                            ?>     
+
+                          <?php if ($counter > 27 && $counter < 29): ?> 
+
+                         <a href="<?php the_permalink(); ?>">
+                         <p class="title tilte_in_country"><?php the_title();?>
                          </p>
-                         <span class="author"> Zoomtravel </span>
+                         <span class="author"> <?php echo esc_html($author); ?> </span>
                         <div >
-                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                          <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                         </div>
-                          <p class="text">Dinh chúa Đảo: Trước đây là nơi ở và làm việc của các đời chúa đảo, tìm hiểu lịch sử hình thành Côn Đảo thông qua các hiện vật, cổ vật, hình ảnh và các tư liệu được lưu lại từ thời Pháp đến nay.</p>
+                          <p class="text"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
                         </a>
+                        <?php endif; ?>
+                        <?php endwhile; 
+                        wp_reset_postdata(); 
+                       endif; ?>
                         </div>
                    </div>
 
@@ -524,92 +591,44 @@ get_header();
                 </span>
                   <div class="line_">
                    </div>
+
                   <div class="article">
-                     <div class="article_box">
+                     <div class="article_box grid_i">
 
-                       <div class="left">
-                         <a href="#">
-                        <div >
-                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                        </div>
-                        <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại 3 ngày 3 đêm
-                          </p>
-                          <span class="author"> Zoomtravel </span>
-                        </a>
-                        </div>
+                     <?php
+                      $args = array(
+                          'posts_per_page' => 6, 
+                          'orderby'        => 'date', 
+                          'order'          => 'DESC',
+                      );
+                      $query = new WP_Query($args);
 
+                      if ($query->have_posts()) : 
+                          while ($query->have_posts()) : 
+                              $query->the_post(); 
+                              $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
+                              $location = get_post_meta(get_the_ID(), 'address', true); 
+                              if (!$image_url) {
+                                  $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                              }
+                              $author = get_the_author();  
+                              ?>     
 
-                        <div class="left">
-                         <a href="#">
-                        <div >
-                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                        </div>
-                        <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại 3 ngày 3 đêm
-                          </p>
-                          <span class="author"> Zoomtravel </span>
-                        </a>
-                        </div>
+                              <div class="left">
+                                  <a href="<?php the_permalink(); ?>">
+                                      <div>
+                                          <img src="<?php echo esc_url($image_url); ?>" alt="">
+                                      </div>
+                                      <p class="title"><?php the_title(); ?></p>
+                                      <span class="author"><?php echo esc_html($author); ?></span>
+                                  </a>
+                              </div>
 
-                        
-
-                     </div>
-                     
-                     <div class="article_box">
-
-                       <div class="left">
-                         <a href="#">
-                        <div >
-                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                        </div>
-                        <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại 3 ngày 3 đêm
-                          </p>
-                          <span class="author"> Zoomtravel </span>
-                        </a>
-                        </div>
-
-
-                        <div class="left">
-                         <a href="#">
-                        <div >
-                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                        </div>
-                        <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại 3 ngày 3 đêm
-                          </p>
-                          <span class="author"> Zoomtravel </span>
-                        </a>
-                        </div>
-
-                        
-
-                     </div>
-
-                     
-                     <div class="article_box">
-
-                       <div class="left">
-                         <a href="#">
-                        <div >
-                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                        </div>
-                        <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại 3 ngày 3 đêm
-                          </p>
-                          <span class="author"> Zoomtravel </span>
-                        </a>
-                        </div>
-
-
-                        <div class="left">
-                         <a href="#">
-                        <div >
-                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                        </div>
-                        <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại 3 ngày 3 đêm
-                          </p>
-                          <span class="author"> Zoomtravel </span>
-                        </a>
-                        </div>
-
-                        
+                          <?php 
+                          endwhile; 
+                          wp_reset_postdata(); 
+                      endif;
+                      ?>
 
                      </div>
                    </div>
@@ -620,58 +639,39 @@ get_header();
                     </span>
                      <div class="line_">
                     </div>
+                   <?php
+                      $args = array(
+                          'posts_per_page' => 3, 
+                          'orderby'        => 'comment_count', 
+                          'order'          => 'DESC',
+                          'post_status'    => 'publish', 
+                      );
 
-                   <div class="box_side_bar">
+                      $popular_posts = new WP_Query($args);
+                    ?>
 
-                          <div>
-                            <a href="#">
-                              <div class="news_botton_box tour_f_right">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
+                    <div class="box_side_bar sb_bottom">
+                        <?php if ($popular_posts->have_posts()) : ?>
+                            <?php while ($popular_posts->have_posts()) : $popular_posts->the_post(); ?>
+                                <div>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <div class="news_botton_box tour_f_right">
+                                            <div class="img_box">
+                                                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'); ?>" alt="<?php echo esc_attr(mb_strimwidth(get_the_title(), 0, 50, '...')); ?>">
+                                            </div>
+                                            <div class="box_text">
+                                                <p class="title"><?php the_title(); ?></p>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                              </div>
-                              </a>
-                           </div>
+                            <?php endwhile; ?>
+                            <?php wp_reset_postdata(); ?>
+                        <?php else : ?>
+                            <p>Không có bài viết nào được tìm thấy.</p>
+                        <?php endif; ?>
+                    </div>
 
-                           <div>
-                            <a href="#">
-                              <div class="news_botton_box tour_f_right">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                </div>
-                              </div>
-                              </a>
-                           </div>
-
-                           <div>
-                            <a href="#">
-                              <div class="news_botton_box tour_f_right">
-                              <div class="img_box">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-                              </div>
-                              <div class="box_text">
-                                <p class="title">Tour Côn Đảo Huyền Thoại Bằng tàu cao tốc hiện đại
-                                </p>
-                                </div>
-                              </div>
-                              </a>
-                           </div>
-
-                           <div class="banner">
-                           <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
-
-                           </div>
-
-
-                   </div>
                    </div>
                   </section>
                  </main>

@@ -9,11 +9,10 @@
         <div class="footer_container_box">
     <h4>TOUR MỚI</h4>
     <?php
-    // Custom query to get 3 posts for this section
     $args = array(
-        'posts_per_page' => 3,  // Show 3 posts for this section
-        'orderby' => 'date',    // Order by date
-        'order' => 'ASC'        // Oldest to newest
+        'posts_per_page' => 3,  
+        'orderby' => 'date',    
+        'order' => 'ASC'        
     );
     
     $query = new WP_Query($args);
@@ -23,17 +22,15 @@
     ?>
         <div class="box_article">
             <div>
-                <!-- Display featured image -->
                 <?php if (has_post_thumbnail()) : ?>
                     <img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="">
                 <?php else : ?>
                     <img src="<?php echo get_template_directory_uri(); ?>/img/travel2.jpg" alt="">
                 <?php endif; ?>
             </div>
-            <div>
-                <!-- Make the post title clickable -->
-                <p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-                <span class="date"><?php the_date(); ?></span>
+            <div class="box_title_footer">
+                <p class="title_footer"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+                <span class="date"><?php echo get_the_date(); ?></span>
             </div>
         </div>
     <?php endwhile; ?>
@@ -43,11 +40,10 @@
 <div class="footer_container_box">
     <h4>TOUR NỔI BẬT</h4>
     <?php
-    // Custom query to get another 3 posts for this section
     $args = array(
-        'posts_per_page' => 3,  // Show 3 posts for this section
-        'orderby' => 'date',    // Order by date
-        'order' => 'ASC'        // Oldest to newest
+        'posts_per_page' => 3,  
+        'orderby' => 'date',   
+        'order' => 'ASC'       
     );
     
     $query = new WP_Query($args);
@@ -57,17 +53,15 @@
     ?>
         <div class="box_article">
             <div>
-                <!-- Display featured image -->
                 <?php if (has_post_thumbnail()) : ?>
                     <img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="">
                 <?php else : ?>
                     <img src="<?php echo get_template_directory_uri(); ?>/img/travel2.jpg" alt="">
                 <?php endif; ?>
             </div>
-            <div>
-                <!-- Make the post title clickable -->
-                <p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-                <span class="date"><?php the_date(); ?></span>
+            <div class="box_title_footer">
+                <p class="title_footer"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+                <span class="date"><?php echo get_the_date(); ?></span>
             </div>
         </div>
     <?php endwhile; ?>
@@ -110,7 +104,6 @@
             </div>
             </div>
         </div>
-            
     </section>
    
 

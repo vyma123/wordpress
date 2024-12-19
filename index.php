@@ -3,10 +3,10 @@
 	get_header();
 	?>
 	<section class="container">
-		<article class="content px-3 py-5">
+		<article class="content px-3">
 		<?php
 		$page = get_page_by_path('blog');
-		echo '<h2>' . get_the_title($page->ID) . '</h2>';
+		echo '<h2 class="title_header_blog">' . get_the_title($page->ID) . '</h2>';
 		?>
 
 			</h3>
@@ -48,11 +48,10 @@
 				<div class="line_top"></div>
 
 				<?php
-				// Custom query to get the oldest 5 posts
 				$args = array(
-					'posts_per_page' => 5,   // Limit to 5 posts
-					'orderby' => 'date',     // Order by date
-					'order' => 'ASC'         // Oldest to newest
+					'posts_per_page' => 5,   
+					'orderby' => 'date',     
+					'order' => 'ASC'         
 				);
 
 				$query = new WP_Query($args);
@@ -60,14 +59,13 @@
 				if ($query->have_posts()) : ?>
 					<div class="container">
 						<?php while ($query->have_posts()) : $query->the_post(); ?>
-							<h3 class="title_sidebar_blog"><?php the_title(); ?></h3>
-							<div class="box_author">
-								<span class="author"><?php the_author(); ?></span> <!-- Display the author's name -->
-								<span class="post_date"><?php the_date(); ?></span> <!-- Display the post date -->
+						<div class="box_author">
+								<span class="author"><?php the_author(); ?></span> 
+								<span class="post_date"><?php the_date(); ?></span> 
 							</div>
 						<?php endwhile; ?>
 						<?php wp_reset_postdata(); ?>
-					</div><!--//container-->
+					</div>
 				<?php else : ?>
 					<p><?php esc_html_e('No posts found.', 'textdomain'); ?></p>
 				<?php endif; ?>

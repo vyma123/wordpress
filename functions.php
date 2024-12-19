@@ -129,6 +129,85 @@ function custom_theme_customizer_register($wp_customize) {
 add_action('customize_register', 'custom_theme_customizer_register');
 
 
+function mytheme_customize_register($wp_customize) {
+    // Thêm Section mới cho địa chỉ
+    $wp_customize->add_section('mytheme_address_section', array(
+        'title'    => __('Thay đổi địa chỉ', 'mytheme'),
+        'priority' => 30,
+    ));
+
+    // Danh sách các địa chỉ
+    $addresses = array(
+        'address_1' => __('Address 1', 'mytheme'),
+        'address_2' => __('Address 2', 'mytheme'),
+        'address_3' => __('Address 3', 'mytheme'),
+        'address_4' => __('Address 4', 'mytheme'),
+    );
+
+    foreach ($addresses as $key => $label) {
+        // Thêm Setting cho từng địa chỉ
+        $wp_customize->add_setting("mytheme_{$key}_setting", array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+
+        // Thêm Control cho từng địa chỉ
+        $wp_customize->add_control("mytheme_{$key}_control", array(
+            'label'    => $label,
+            'section'  => 'mytheme_address_section',
+            'settings' => "mytheme_{$key}_setting",
+            'type'     => 'text',
+        ));
+    }
+}
+add_action('customize_register', 'mytheme_customize_register');
+
+
+function mytheme_customize_register2($wp_customize) {
+    // Thêm setting cho màu tiêu đề chính
+    $wp_customize->add_setting('mytheme_title_color_setting', array(
+        'default'           => '#FF5733',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+
+    // Thêm control cho màu tiêu đề chính
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'mytheme_title_color_control', array(
+        'label'    => __('Tiêu đề chính', 'mytheme'),
+        'section'  => 'colors',
+        'settings' => 'mytheme_title_color_setting',
+    )));
+
+    // Thêm setting cho màu tiêu đề phụ
+    $wp_customize->add_setting('mytheme_subtitle_color_setting', array(
+        'default'           => '#2ECC71',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+
+    // Thêm control cho màu tiêu đề phụ
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'mytheme_subtitle_color_control', array(
+        'label'    => __('Tiêu đề phụ', 'mytheme'),
+        'section'  => 'colors',
+        'settings' => 'mytheme_subtitle_color_setting',
+    )));
+
+   
 
 
 
+    
+}
+add_action('customize_register', 'mytheme_customize_register2');
+
+
+function customSetPostViews($postID) {
+    $countKey = 'post_views_count';
+    $count = get_post_meta($postID, $countKey, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $countKey);
+        add_post_meta($postID, $countKey, '1');
+    }else{
+        $count++;
+        update_post_meta($postID, $countKey, $count);
+    }
+}

@@ -26,8 +26,8 @@
 			<div class="box_title_sidebar">
 			<?php
 			$recent_posts = new WP_Query(array(
-				'posts_per_page' => 5, // Lấy 5 bài viết
-				'post_status' => 'publish', // Chỉ lấy bài viết đã được xuất bản
+				'posts_per_page' => 5, 
+				'post_status' => 'publish',
 			));
 
 			if ($recent_posts->have_posts()) :
