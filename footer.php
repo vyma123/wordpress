@@ -86,6 +86,9 @@
 
 					$custom_logo_id = get_theme_mod('custom_logo');
 					$logo = wp_get_attachment_image_src($custom_logo_id);
+                    if(empty($logo[0])){
+                        $logo[0] = get_template_directory_uri()."/assets/images/logo.png";
+                    }
 				}
 				?>
 				<img class="mb-3 mx-auto logo" src="<?php echo $logo[0] ?>" alt="logo" >        </a>
