@@ -316,14 +316,12 @@ ul{
     gap: 3rem;
 }
 
-
-
 .container .title_line {
     color: #fff;
     background-color: #000;
     text-align: center;
     width: 12rem;
-    padding: 0.5rem 1rem 0.2rem 1rem;
+    padding: 0.4rem 1rem 0.2rem 1rem;
 }
 
 .container .box_author{
@@ -1707,6 +1705,11 @@ h3{
     gap: 2rem;
 }
 
+.grid_i .grid_i_box{
+    width: 100%;
+    height: 18rem;
+}
+
 .grid_i .title{
     margin-top: 1rem;
     display: -webkit-box;
@@ -2042,7 +2045,7 @@ width: 9rem;
 
 .gc .img_box{
     overflow: hidden;
-    height: 13rem;
+    height: 12rem;
 }
 
 .gc .img_box img{
@@ -2281,10 +2284,10 @@ FOOTER
   }
   
   .box_footer img {
-    width: 100%; /* Chiều rộng tự động điều chỉnh theo cha */
-    height: auto; /* Giữ tỷ lệ gốc để không bị méo */
-    object-fit: cover; /* Đảm bảo hình ảnh vừa khít với thẻ mà không méo */
-    object-position: center 85%; /* Căn giữa theo chiều ngang, hạ xuống một chút theo chiều dọc */
+    width: 100%;
+    height: auto; 
+    object-fit: cover; 
+    object-position: center 85%; 
 
   }
 
@@ -2294,6 +2297,22 @@ FOOTER
     align-items: flex-start;
     justify-content: space-between;
     padding: 5.5rem 0;
+}
+
+.title_cate{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 

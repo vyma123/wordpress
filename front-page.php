@@ -616,7 +616,7 @@ get_header();
 
                               <div class="left">
                                   <a href="<?php the_permalink(); ?>">
-                                      <div>
+                                      <div class="grid_i_box">
                                           <img src="<?php echo esc_url($image_url); ?>" alt="">
                                       </div>
                                       <p class="title"><?php the_title(); ?></p>

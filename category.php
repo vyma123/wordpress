@@ -1,15 +1,12 @@
 <?php
 	get_header();
-	?>
+?>
     
-
-
 <?php if (is_category('du-lich')) : ?>
 	<section class="container">
 		<article class="content px-3">
 		<?php
-		$page = get_page_by_path('blog');
-		echo '<h2 class="title_header_blog">' . get_the_title($page->ID) . '</h2>';
+		echo '<h2 class="title_header_blog">' . single_cat_title('', false)  . '</h2>';
 		?>
 			</h3>
 			<span class="title_line">MỚI NHẤT</span>

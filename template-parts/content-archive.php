@@ -8,7 +8,7 @@
             ?>" alt="image">
             </a>
             <div class="media-body">
-                <a class="text_blog" href="<?php the_permalink(); ?>"><?php the_title();?></a>    
+                <a class="text_blog title_cate" href="<?php the_permalink(); ?>"><?php the_title();?></a>    
                 <div class="meta mb-1"><span class="date"><?php the_date();?></span><span class="comment"><a href="#"><?php comments_number(); ?></a></span></div>
                 
                 <a class="more-link" href="<?php the_permalink(); ?>">Xem thêm &rarr;</a>
