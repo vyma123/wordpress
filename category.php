@@ -1,16 +1,16 @@
-
 <?php
 	get_header();
 	?>
+    
+
+
+<?php if (is_category('du-lich')) : ?>
 	<section class="container">
 		<article class="content px-3">
 		<?php
 		$page = get_page_by_path('blog');
 		echo '<h2 class="title_header_blog">' . get_the_title($page->ID) . '</h2>';
 		?>
-
-		
-
 			</h3>
 			<span class="title_line">MỚI NHẤT</span>
 			<div class="line_top"></div>
@@ -29,7 +29,7 @@
 				 ?>
 				</div>
 				<div>
-				<div class="adv">
+				<div class="adv adv_sidebar_cate">
 					<div class="adv_image">
 						<?php 
 							$adv_image = get_theme_mod('custom_adv_image');
@@ -59,11 +59,14 @@
 				$query = new WP_Query($args);
 
 				if ($query->have_posts()) : ?>
-					<div class="container">
+					<div class="container sidebar_container_cate">
 						<?php while ($query->have_posts()) : $query->the_post(); ?>
-						<div class="box_author">
-								<span class="author"><?php the_author(); ?></span> 
-								<span class="post_date"><?php the_date(); ?></span> 
+						<div class="box_author box_author_cate">
+								<a href="<?php the_permalink(); ?>" class="author tl"><?php the_title(); ?></a>
+                                <div>
+                                    <span class="author"><?php the_author(); ?></span> 
+                                    <span class="post_date"><?php echo get_the_date(); ?></span> 
+                                </div> 
 							</div>
 						<?php endwhile; ?>
 						<?php wp_reset_postdata(); ?>
@@ -71,9 +74,6 @@
 				<?php else : ?>
 					<p><?php esc_html_e('No posts found.', 'textdomain'); ?></p>
 				<?php endif; ?>
-
-
-
 			</div>
 			</div>
 	   <?php 
@@ -82,7 +82,10 @@
 	    </article>
 	</section>
 	 
-    
-	<?php
+
+<?php endif; ?>
+
+
+<?php
 	get_footer();
 	?>

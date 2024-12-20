@@ -6,7 +6,18 @@
           <span class="date"><?php the_date(); ?></span>
           <?php
              the_tags('<span class="tag"><i class="fa fa-tag"></i>', '</span><span class="tag"><i class="fa fa-tag"></i>','</span>');
+
+             $categories = get_the_category();
+             if (!empty($categories)) {
+                 foreach ($categories as $category) {
+                     $category_link = get_category_link($category->term_id);
+                     echo '<span class="category"><i class="fa fa-folder"></i> <a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a></span>';
+                 }
+             }
           ?>
+          
+          
+           
           <div class="right_single_box">
             <?php
               $post_views_count = get_post_meta( get_the_ID(), 'post_views_count', true );

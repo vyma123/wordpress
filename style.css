@@ -54,6 +54,7 @@ Author URI: https://youtube.com/nhacatk
 
 html {
     line-height: 1.15;
+    margin: 0 !important;
 }
 body {
     color: var(--secondary);
@@ -343,6 +344,35 @@ ul{
 
 .right_single_box .comment{
     margin-left: 2rem;
+}
+
+.tl{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.box_author_cate{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    gap: 0.4rem !important;
+}
+
+.sidebar_container_cate{
+    padding: 0;
+}
+
+.adv_sidebar_cate{
+    margin-top: 0 !important;
+}
+
+
+.box_author_cate .author{
+    margin-right: 1rem;
+    margin-bottom: 0;
 }
 
 .container .post_date{
@@ -1832,12 +1862,19 @@ h3{
     font-size: 1rem !important;
 }
 
-
+.container_blog{
+    padding: 0;
+}
 
 .box_img_blog{
-    height: 14rem;
-    width: 14rem;
+    height: 11rem;
+    width: 100%;
     margin-bottom: 1rem;
+}
+
+.box_img_blog img{
+    width: 100%;
+    max-width: none;
 }
 
 .text_blog{
@@ -2256,7 +2293,7 @@ FOOTER
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 6.5rem 0;
+    padding: 5.5rem 0;
 }
 
 
