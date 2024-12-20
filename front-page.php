@@ -25,14 +25,21 @@ get_header();
                             $counter++;
                             $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
                             $location = get_post_meta(get_the_ID(), 'address', true); 
-                            if (!$image_url) {
-                                $image_url = get_template_directory_uri() . '/assets/images/travel2.jpg'; 
-                            }
+                            // if (!$image_url) {
+                            //     $image_url = get_template_directory_uri() . '/assets/images/travel3.jpg'; 
+                            // }
                             ?>
                             <?php if ($counter == 1): ?>
                             <div class="hero-left">
                               <a href="<?php the_permalink(); ?>">
+                              <?php
+                                $default_image = get_template_directory_uri() . '/assets/images/travel2.jpg';
+
+                                $image_url = !empty($image_url) ? $image_url : $default_image;
+                                
+                                ?>
                                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
+
                                 <span class="address">
                                   <i class="location arrow icon"></i>
                                   <?php echo esc_html(get_theme_mod('mytheme_address_1_setting', 'Default Address 1')); ?>
@@ -45,6 +52,12 @@ get_header();
                             <div class="hero-right">
                               <div class="hero-right-top">
                                 <a href="<?php the_permalink(); ?>">
+                                <?php
+                                $default_image = get_template_directory_uri() . '/assets/images/travel3.jpg';
+
+                                $image_url = !empty($image_url) ? $image_url : $default_image;
+                                
+                                ?>
                                   <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
                                   <span class="address top_r">
                                     <i class="location arrow icon"></i>
@@ -57,6 +70,12 @@ get_header();
                             <?php elseif($counter == 3): ?>
                                 <div>
                                   <a href="<?php the_permalink(); ?>">
+                                  <?php
+                                $default_image = get_template_directory_uri() . '/assets/images/travel4.jpg';
+
+                                $image_url = !empty($image_url) ? $image_url : $default_image;
+                                
+                                ?>
                                     <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
                                     <span class="address">
                                       <i class="location arrow icon"></i>
@@ -68,6 +87,12 @@ get_header();
                             <?php elseif($counter == 4): ?>
                               <div>
                                   <a href="<?php the_permalink(); ?>">
+                                  <?php
+                                $default_image = get_template_directory_uri() . '/assets/images/travel5.jpg';
+
+                                $image_url = !empty($image_url) ? $image_url : $default_image;
+                                
+                                ?>
                                     <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
                                     <span class="address">
                                       <i class="location arrow icon"></i>
@@ -236,6 +261,9 @@ get_header();
                       <div class="adv_image">
                         <?php 
                           $adv_image = get_theme_mod('custom_adv_image');
+                          if(empty($adv_image)){
+                            $adv_image = get_template_directory_uri()."/assets/images/banner.jpg";
+                          }
                           if ($adv_image) { 
                         ?>
                           <img src="<?php echo esc_url($adv_image); ?>" alt="Advertisement">
@@ -282,7 +310,7 @@ get_header();
                             $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
                             $location = get_post_meta(get_the_ID(), 'address', true); 
                             if (!$image_url) {
-                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                                $image_url = get_template_directory_uri() . '/assets/images/travel3.jpg'; 
                             }
                             $author = get_the_author();  
                             ?>       
@@ -364,7 +392,7 @@ get_header();
                             $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
                             $location = get_post_meta(get_the_ID(), 'address', true); 
                             if (!$image_url) {
-                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                                $image_url = get_template_directory_uri() . '/assets/images/travel5.jpg'; 
                             }
                             $author = get_the_author();  
                             ?>     
@@ -418,7 +446,7 @@ get_header();
                             $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
                             $location = get_post_meta(get_the_ID(), 'address', true); 
                             if (!$image_url) {
-                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                                $image_url = get_template_directory_uri() . '/assets/images/travel11.jpg'; 
                             }
                             $author = get_the_author();  
                             ?>     
@@ -474,7 +502,7 @@ get_header();
                             $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
                             $location = get_post_meta(get_the_ID(), 'address', true); 
                             if (!$image_url) {
-                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                                $image_url = get_template_directory_uri() . '/assets/images/travel5.jpg'; 
                             }
                             $author = get_the_author();  
                             ?>     
@@ -511,6 +539,12 @@ get_header();
                       <div class="adv_image">
                         <?php 
                           $adv_image = get_theme_mod('custom_adv_image');
+
+                          if(empty($adv_image)){
+
+                            $adv_image = get_template_directory_uri()."/assets/images/banner.jpg";
+                          }
+
                           if ($adv_image) { 
                         ?>
                           <img src="<?php echo esc_url($adv_image); ?>" alt="Advertisement">
@@ -551,7 +585,7 @@ get_header();
                             $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
                             $location = get_post_meta(get_the_ID(), 'address', true); 
                             if (!$image_url) {
-                                $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                                $image_url = get_template_directory_uri() . '/assets/images/travel7.jpg'; 
                             }
                             $author = get_the_author();  
                             ?>     
@@ -573,13 +607,12 @@ get_header();
                        endif; ?>
                         </div>
                    </div>
-
                    </div>
                   </section>
 
                   <section class="flash_sale">
                      <div class="banner_box">
-                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel1.jpg" alt="">
+                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/banner_selling.webp" alt="">
                      </div>
                      <!-- <a href="#">ĐẶT TOUR ></a> -->
                   </section>
@@ -609,7 +642,7 @@ get_header();
                               $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
                               $location = get_post_meta(get_the_ID(), 'address', true); 
                               if (!$image_url) {
-                                  $image_url = get_template_directory_uri() . '/assets/images/travel1.jpg'; 
+                                  $image_url = get_template_directory_uri() . '/assets/images/travel4.jpg'; 
                               }
                               $author = get_the_author();  
                               ?>     
@@ -657,7 +690,13 @@ get_header();
                                     <a href="<?php the_permalink(); ?>">
                                         <div class="news_botton_box tour_f_right">
                                             <div class="img_box">
-                                                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'); ?>" alt="<?php echo esc_attr(mb_strimwidth(get_the_title(), 0, 50, '...')); ?>">
+                                              <?php
+                                              $image_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+                                               if (!$image_url) {
+                                                $image_url = get_template_directory_uri() . '/assets/images/travel7.jpg'; 
+                                            }
+                                              ?>
+                                                <img src="<?php echo $image_url; ?>" alt="<?php echo esc_attr(mb_strimwidth(get_the_title(), 0, 50, '...')); ?>">
                                             </div>
                                             <div class="box_text">
                                                 <p class="title"><?php the_title(); ?></p>

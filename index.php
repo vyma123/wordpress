@@ -8,9 +8,6 @@
 		$page = get_page_by_path('blog');
 		echo '<h2 class="title_header_blog">' . get_the_title($page->ID) . '</h2>';
 		?>
-
-		
-
 			</h3>
 			<span class="title_line">MỚI NHẤT</span>
 			<div class="line_top"></div>
@@ -34,7 +31,8 @@
 						<?php 
 							$adv_image = get_theme_mod('custom_adv_image');
 							if ($adv_image) { 
-						?>
+						   ?>
+						
 							<img src="<?php echo esc_url($adv_image); ?>" alt="Advertisement">
 						<?php } ?>
 					</div>

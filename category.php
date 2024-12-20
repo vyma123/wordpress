@@ -30,7 +30,11 @@
 					<div class="adv_image">
 						<?php 
 							$adv_image = get_theme_mod('custom_adv_image');
+							if(empty($adv_image)){
+								$adv_image = get_template_directory_uri()."/assets/images/banner.jpg";
+							}
 							if ($adv_image) { 
+
 						?>
 							<img src="<?php echo esc_url($adv_image); ?>" alt="Advertisement">
 						<?php } ?>

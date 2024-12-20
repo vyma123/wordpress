@@ -19,15 +19,21 @@
 
 
 <header id="header" class="header">
-        <a href="<?php echo home_url(); ?>" class="logo">
-		<?php
-				if(function_exists('the_custom_logo')){
-
+			<a href="<?php echo home_url(); ?>" class="logo">
+				<?php
+				if (function_exists('the_custom_logo')) {
 					$custom_logo_id = get_theme_mod('custom_logo');
 					$logo = wp_get_attachment_image_src($custom_logo_id);
 				}
+
+				$default_logo = get_template_directory_uri() . '/assets/images/logo.png';
+
+				$logo_url = !empty($logo) ? $logo[0] : $default_logo;
 				?>
-				<img class="mb-3 mx-auto logo" src="<?php echo $logo[0] ?>" alt="logo" >        </a>
+				
+				<img class="mb-3 mx-auto logo" src="<?php echo esc_url($logo_url); ?>" alt="logo">
+			</a>
+
         <nav>
 
 		<?php

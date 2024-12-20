@@ -25,7 +25,7 @@
                 <?php if (has_post_thumbnail()) : ?>
                     <img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="">
                 <?php else : ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/travel2.jpg" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel9.jpg" alt="">
                 <?php endif; ?>
             </div>
             <div class="box_title_footer">
@@ -56,7 +56,7 @@
                 <?php if (has_post_thumbnail()) : ?>
                     <img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="">
                 <?php else : ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/travel2.jpg" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/travel11.jpg" alt="">
                 <?php endif; ?>
             </div>
             <div class="box_title_footer">

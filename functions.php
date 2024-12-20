@@ -22,9 +22,6 @@ function follow_menus(){
 add_action('init', 'follow_menus');
 
 
-
-
-
 function follow_register_styles(){
 
     $version = wp_get_theme()->get( 'Version' );
@@ -73,13 +70,11 @@ add_action( 'widgets_init', 'follow_widget_areas');
 
 
 function custom_theme_customizer_register($wp_customize) {
-    // Section tùy chỉnh
     $wp_customize->add_section('custom_theme_options', array(
         'title'    => __('Theme Options', 'your-theme'),
         'priority' => 130,
     ));
 
-    // Setting cho ảnh
     $wp_customize->add_setting('custom_adv_image', array(
         'default'   => '',
         'transport' => 'refresh',
@@ -90,7 +85,6 @@ function custom_theme_customizer_register($wp_customize) {
         'settings' => 'custom_adv_image',
     )));
 
-    // Setting cho tiêu đề
     $wp_customize->add_setting('custom_adv_title', array(
         'default'   => 'Text advertisement',
         'transport' => 'refresh',
@@ -102,7 +96,6 @@ function custom_theme_customizer_register($wp_customize) {
         'type'     => 'text',
     ));
 
-    // Setting cho URL liên kết
     $wp_customize->add_setting('custom_adv_link', array(
         'default'   => '#',
         'transport' => 'refresh',
@@ -114,7 +107,6 @@ function custom_theme_customizer_register($wp_customize) {
         'type'     => 'url',
     ));
 
-    // Setting cho văn bản nút
     $wp_customize->add_setting('custom_adv_button_text', array(
         'default'   => 'Đặt ngay',
         'transport' => 'refresh',
@@ -130,13 +122,11 @@ add_action('customize_register', 'custom_theme_customizer_register');
 
 
 function mytheme_customize_register($wp_customize) {
-    // Thêm Section mới cho địa chỉ
     $wp_customize->add_section('mytheme_address_section', array(
         'title'    => __('Thay đổi địa chỉ', 'mytheme'),
         'priority' => 30,
     ));
 
-    // Danh sách các địa chỉ
     $addresses = array(
         'address_1' => __('Address 1', 'mytheme'),
         'address_2' => __('Address 2', 'mytheme'),
@@ -145,13 +135,11 @@ function mytheme_customize_register($wp_customize) {
     );
 
     foreach ($addresses as $key => $label) {
-        // Thêm Setting cho từng địa chỉ
         $wp_customize->add_setting("mytheme_{$key}_setting", array(
             'default'           => '',
             'sanitize_callback' => 'sanitize_text_field',
         ));
 
-        // Thêm Control cho từng địa chỉ
         $wp_customize->add_control("mytheme_{$key}_control", array(
             'label'    => $label,
             'section'  => 'mytheme_address_section',
@@ -164,26 +152,22 @@ add_action('customize_register', 'mytheme_customize_register');
 
 
 function mytheme_customize_register2($wp_customize) {
-    // Thêm setting cho màu tiêu đề chính
     $wp_customize->add_setting('mytheme_title_color_setting', array(
         'default'           => '#FF5733',
         'sanitize_callback' => 'sanitize_hex_color',
     ));
 
-    // Thêm control cho màu tiêu đề chính
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'mytheme_title_color_control', array(
         'label'    => __('Tiêu đề chính', 'mytheme'),
         'section'  => 'colors',
         'settings' => 'mytheme_title_color_setting',
     )));
 
-    // Thêm setting cho màu tiêu đề phụ
     $wp_customize->add_setting('mytheme_subtitle_color_setting', array(
         'default'           => '#2ECC71',
         'sanitize_callback' => 'sanitize_hex_color',
     ));
 
-    // Thêm control cho màu tiêu đề phụ
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'mytheme_subtitle_color_control', array(
         'label'    => __('Tiêu đề phụ', 'mytheme'),
         'section'  => 'colors',
