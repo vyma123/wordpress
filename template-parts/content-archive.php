@@ -3,6 +3,9 @@
       <div class="post mb-5">
         <div class="media">
         <a class="more-link box_img_blog" href="<?php the_permalink(); ?>">
+            <?php 
+            $img_src
+            ?>
             <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="<?php 
             the_post_thumbnail_url('thumbnail');
             ?>" alt="image">

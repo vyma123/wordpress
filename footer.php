@@ -43,7 +43,7 @@
     $args = array(
         'posts_per_page' => 3,  
         'orderby' => 'date',   
-        'order' => 'ASC'       
+        'order' => 'DESC'       
     );
     
     $query = new WP_Query($args);

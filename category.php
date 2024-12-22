@@ -82,11 +82,8 @@
 		  ?>
 	    </article>
 	</section>
-	 
-
 <?php endif; ?>
-
-
 <?php
 	get_footer();
 	?>
+

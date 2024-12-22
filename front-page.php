@@ -372,7 +372,7 @@ get_header();
                      <div class="line_">
                     </div>
 
-                   <div class="box_side_bar">
+                   <div class="box_side_bar right_news">
 
                    <div class="right news_botton">
                    <?php
@@ -510,7 +510,7 @@ get_header();
                           <?php if ($counter > 23 && $counter < 28): ?> 
                           <div>
                             <a href="<?php the_permalink(); ?>">
-                              <div class="img_box">
+                              <div class="img_box fl_l">
                                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" alt="">
                               </div>
                               <div>
@@ -689,7 +689,7 @@ get_header();
                                 <div>
                                     <a href="<?php the_permalink(); ?>">
                                         <div class="news_botton_box tour_f_right">
-                                            <div class="img_box">
+                                            <div class="popul">
                                               <?php
                                               $image_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
                                                if (!$image_url) {
