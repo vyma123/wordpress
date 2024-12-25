@@ -377,7 +377,7 @@ get_header();
                    <div class="right news_botton">
                    <?php
                     $args = array(
-                        'posts_per_page' => 4, 
+                        'posts_per_page' => 8, 
                         'orderby' => 'date',
                         'order' => 'ASC' ,
                         'offset' => 15, 
@@ -397,7 +397,7 @@ get_header();
                             $author = get_the_author();  
                             ?>     
 
-                          <?php if ($counter > 15 && $counter < 20): ?>                      
+                          <?php if ($counter > 15 && $counter < 24): ?>                      
                           <div>
                             <a href="<?php the_permalink(); ?>">
                               <div class="news_botton_box tour_f_right">
@@ -434,7 +434,7 @@ get_header();
                         'posts_per_page' => 4, 
                         'orderby' => 'date',
                         'order' => 'ASC' ,
-                        'offset' => 19, 
+                        'offset' => 23, 
                     );
                     $query = new WP_Query($args);
 
@@ -487,10 +487,10 @@ get_header();
                         <div class="right">
                         <?php
                     $args = array(
-                        'posts_per_page' => 4, 
+                        'posts_per_page' => 6, 
                         'orderby' => 'date',
                         'order' => 'ASC' ,
-                        'offset' => 23, 
+                        'offset' => 27, 
                     );
                     $query = new WP_Query($args);
 
@@ -507,7 +507,7 @@ get_header();
                             $author = get_the_author();  
                             ?>     
 
-                          <?php if ($counter > 23 && $counter < 28): ?> 
+                          <?php if ($counter > 23 && $counter < 30): ?> 
                           <div>
                             <a href="<?php the_permalink(); ?>">
                               <div class="img_box fl_l">
@@ -573,12 +573,12 @@ get_header();
                         'posts_per_page' => 1, 
                         'orderby' => 'date',
                         'order' => 'ASC' ,
-                        'offset' => 27, 
+                        'offset' => 33, 
                     );
                     $query = new WP_Query($args);
 
                     if ($query->have_posts()) : 
-                        $counter = 27; 
+                        $counter = 30; 
                         while ($query->have_posts()) : 
                             $query->the_post(); 
                             $counter++;
@@ -590,7 +590,7 @@ get_header();
                             $author = get_the_author();  
                             ?>     
 
-                          <?php if ($counter > 27 && $counter < 29): ?> 
+                          <?php if ($counter > 30 && $counter < 32): ?> 
 
                          <a href="<?php the_permalink(); ?>">
                          <p class="title tilte_in_country"><?php the_title();?>
@@ -652,7 +652,7 @@ get_header();
                                       <div class="grid_i_box">
                                           <img src="<?php echo esc_url($image_url); ?>" alt="">
                                       </div>
-                                      <p class="title"><?php the_title(); ?></p>
+                                      <p class="title title_new"><?php the_title(); ?></p>
                                       <span class="author"><?php echo esc_html($author); ?></span>
                                   </a>
                               </div>
@@ -674,7 +674,7 @@ get_header();
                     </div>
                    <?php
                       $args = array(
-                          'posts_per_page' => 3, 
+                          'posts_per_page' => 7, 
                           'orderby'        => 'comment_count', 
                           'order'          => 'DESC',
                           'post_status'    => 'publish', 

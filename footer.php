@@ -71,11 +71,10 @@
 
         <div class="box_article support_cl">
             <h4>HỖ TRỢ KHÁCH HÀNG</h4>
-            <span>Hotline: Tư vấn từ 8h - 18h: 028.7308 1618 -
-                <br> Ngoài giờ: 0903975074</span>
-            <span>Điện thoại: 028.7308 9818 - 0967 90 90 74</span>
+            <span>Hotline: Tư vấn từ 8h - 18h: 0888800914</span>
+            <span>Điện thoại: 0888800914</span>
             <span>Fax:</span>
-            <span>Email: travel@gmail.com</span>
+            <span>Email: montamon147@gmail.com</span>
         </div>
 
        </div>
